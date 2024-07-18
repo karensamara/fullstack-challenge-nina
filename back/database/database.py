@@ -93,7 +93,6 @@ class Database:
                 complaint[f'user_{key}'] = value
 
             complaints_with_user_data.append(complaint)
-
         return complaints_with_user_data
 
     def get_complaint(self, _id: str = None):
@@ -105,6 +104,14 @@ class Database:
         result = list(filter(lambda x: x['id'] == _id, self.complaints))
         if len(result) > 0:
             return result[0]
+        return None
+    
+    def get_complaints_from_user(self, user_id: str):
+        complaints = self.get_complaints()
+
+        result = list(filter(lambda x: x['user_id'] == user_id, complaints))
+        if len(result) > 0:
+            return result
         return None
     
     def group_by(self, complaint_key: str):

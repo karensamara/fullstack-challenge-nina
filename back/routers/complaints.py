@@ -1,7 +1,7 @@
-from back.schemas.complaints import ComplaintSchema, ComplaintList, ComplaintUserSchema, ComplaintUserList
-from back.schemas.group_bys import *
+from schemas.complaints import ComplaintSchema, ComplaintList, ComplaintUserSchema, ComplaintUserList
+from schemas.group_bys import *
 from fastapi import APIRouter, HTTPException
-from back.database.database import client
+from database.database import client
 from http import HTTPStatus
 
 router = APIRouter(prefix='/complaints', tags=['complaints'])
@@ -21,9 +21,15 @@ def get_complaint(complaint_id: str):
 
     return complaint
 
-# @router.get('/user/{user_id}', response_model=ComplaintList)
-# def get_complaints_from_user(user_id: str):
-#     # Implement your function here!
+@router.get('/user/{user_id}', response_model=ComplaintList)
+def get_complaints_from_user(user_id: str):
+    complaints = client.get_complaints_from_user(user_id)
+    
+    if complaints is None:
+        raise HTTPException(status_code=HTTPStatus.NOT_FOUND, detail=f"Complaints not found for user with id {user_id}.")
+    
+    complaints.sort(key=lambda x: x['id'])
+    return {'complaints': complaints}
 
 @router.get('/group/types', response_model=GroupByTypes)
 def get_complaints_group_by_types():
