@@ -10,8 +10,8 @@
           "style": "scss"
         }
       },
-      "root": "public",
-      "sourceRoot": "public",
+      "root": "",
+      "sourceRoot": "src",
       "prefix": "app",
       "architect": {
         "build": {

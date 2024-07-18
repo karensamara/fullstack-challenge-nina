@@ -2,8 +2,9 @@ import { Component } from '@angular/core';
 
 @Component({
   standalone: true,
-  templateUrl: './apps.component.html',
-  styleUrl: './app.component.scss',
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
   title = 'front';
