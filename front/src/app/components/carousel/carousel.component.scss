@@ -1,0 +1,12 @@
+@import "../../../styles.scss";
+
+swiper-container {
+  width: 34.5rem;
+  height: 25.7rem;
+  background-color: $primary;
+  border-radius: 1rem;
+  margin: 0;
+  padding: 1.5rem;
+  --swiper-pagination-bullet-color: white !important; /* Default color */
+  --swiper-pagination-bullet-active-color: $primary; /* Active color */
+}
