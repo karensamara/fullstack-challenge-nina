@@ -7,6 +7,29 @@ swiper-container {
   border-radius: 1rem;
   margin: 0;
   padding: 1.5rem;
-  --swiper-pagination-bullet-color: white !important; /* Default color */
-  --swiper-pagination-bullet-active-color: $primary; /* Active color */
+  --swiper-pagination-bullet-size: 0.8rem;
+}
+
+swiper-container::part(bullet) {
+  background-color: white;
+}
+
+swiper-container::part(bullet-active) {
+  background-color: white;
+}
+
+swiper-container::part(button-next) {
+  color: white;
+  right: 150px;
+  top: 350px;
+  height: 1.5rem;
+  z-index: 1000;
+}
+
+swiper-container::part(button-prev) {
+  color: white;
+  left: 150px;
+  top: 350px;
+  height: 1.5rem;
+  z-index: 1000;
 }
