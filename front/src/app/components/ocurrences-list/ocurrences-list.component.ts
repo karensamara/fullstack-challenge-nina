@@ -9,7 +9,7 @@ import { OcurrencesCardComponent } from '../ocurrences-card/ocurrences-card.comp
   standalone: true,
   imports: [CommonModule, OcurrencesCardComponent],
   templateUrl: './ocurrences-list.component.html',
-  styleUrl: './ocurrences-list.component.scss',
+  styleUrls: ['./ocurrences-list.component.scss'],
 })
 export class OcurrencesListComponent implements OnInit {
   ocurrences: Complaint[] = [];
@@ -19,13 +19,15 @@ export class OcurrencesListComponent implements OnInit {
   ngOnInit(): void {
     this.complaintsService.getComplaints().subscribe(
       (complaints: Complaint[]) => {
-        console.log('Fetched complaints:', complaints); // Adicione isto para ver a resposta
-
         this.ocurrences = complaints;
       },
       (error) => {
         console.error('Error fetching complaints', error);
       }
     );
+  }
+
+  getCardBackgroundColor(index: number): string {
+    return index % 2 === 0 ? '#f8f8f8' : '#E9E8EB';
   }
 }

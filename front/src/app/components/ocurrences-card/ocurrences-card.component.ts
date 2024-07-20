@@ -1,19 +1,17 @@
 import { Component, Input } from '@angular/core';
 import { Complaint } from '../../models/complaint.model';
 import { CommonModule } from '@angular/common';
+import { ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-ocurrences-card',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './ocurrences-card.component.html',
-  styleUrl: './ocurrences-card.component.scss',
+  styleUrls: ['./ocurrences-card.component.scss'],
+  encapsulation: ViewEncapsulation.None, // Disable encapsulation for testing
 })
 export class OcurrencesCardComponent {
-  @Input() ocurrence: Complaint = {
-    id: '',
-    type: '',
-    date: new Date(),
-    neighborhood: '',
-  };
+  @Input() ocurrence!: Complaint;
+  @Input() backgroundColor: string = '';
 }

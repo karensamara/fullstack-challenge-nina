@@ -1,6 +1,20 @@
 <div class="ocurrences-list">
-  <div *ngFor="let complaint of ocurrences">
-    olar
-    <app-occurrences-card [ocurrence]="complaint"></app-occurrences-card>
+  <div class="grid grid-cols-2 gap-4 mx-9">
+    <!-- Column Headers -->
+    <div class="col-span-1 grid grid-cols-3 gap-4 items-center">
+      <p class="text-left font-bold">Identificador</p>
+      <p class="ml-8 font-bold">Bairro</p>
+      <p class="font-bold">Data do ocorrido</p>
+    </div>
+    <!-- Tipo de agressão -->
+    <div class="col-span-1 flex items-center justify-center">
+      <p class="font-bold">Tipo de agressão</p>
+    </div>
   </div>
+
+  <app-ocurrences-card
+    *ngFor="let ocurrence of ocurrences; let i = index"
+    [ocurrence]="ocurrence"
+    [backgroundColor]="getCardBackgroundColor(i)"
+  ></app-ocurrences-card>
 </div>

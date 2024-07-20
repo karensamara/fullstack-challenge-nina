@@ -1,14 +1,23 @@
-<div class="card">
-  <div class="info">
-    <p class="id">aqui {{ ocurrence.id }}</p>
-    <body class="neighborhood">
-      aqui2: {{ ocurrence.neighborhood }}
-    </body>
-    <body class="date">
-      {{ ocurrence.date }}
-    </body>
+<div
+  class="w-full h-16 rounded-lg grid grid-cols-2 gap-4 px-8 my-2.5"
+  [ngStyle]="{ 'background-color': backgroundColor }"
+>
+  <!-- Column Content -->
+  <div class="col-span-1 grid grid-cols-3 gap-4 items-center">
+    <div class="overflow-hidden whitespace-nowrap text-ellipsis">
+      {{ ocurrence.id }}
+    </div>
+    <div class="overflow-hidden whitespace-nowrap text-ellipsis ml-8">
+      {{ ocurrence.neighborhood }}
+    </div>
+    <div>
+      {{ ocurrence.date | date : "dd/MM/yyyy" }}
+    </div>
   </div>
-  <div class="chip-type">
-    {{ ocurrence.type }}
+  <!-- Tipo de agressão -->
+  <div class="flex items-center justify-center">
+    <div class="caption-1 border py-1 px-2 rounded-full">
+      {{ ocurrence.type }}
+    </div>
   </div>
 </div>
