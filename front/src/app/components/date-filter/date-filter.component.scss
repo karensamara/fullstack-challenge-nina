@@ -1,0 +1,35 @@
+@import "../../../styles.scss";
+
+.date-filter {
+  width: 100%;
+  height: 100%;
+}
+
+// mat-form-field {
+//   height: 4rem;
+//   color: blue;
+// }
+::ng-deep .mat-form-field .mat-input-element {
+  border-radius: 8px; /* Adjust the border radius of the input field */
+  background-color: #f1ecff; /* Change the background color of the input field */
+  //   //   padding: 0;
+  //   font-size: 1rem;
+  //   font-style: italic;
+}
+
+::ng-deep .mat-form-field {
+  height: 1rem;
+}
+
+::ng-deep .mdc-text-field.mdc-text-field--filled .mdc-text-field__ripple {
+  border-radius: 8px; /* Border radius for ripple effect */
+}
+
+::ng-deep .mat-mdc-text-field-wrapper {
+  background: #f1ecff;
+  height: 2rem;
+}
+
+// ::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+//   --mdc-filled-text-field-container-color: #f1ecff;
+// }

@@ -1,20 +1,41 @@
 <div class="ocurrences-list">
-  <div class="grid grid-cols-2 gap-4 mx-9">
+  <div class="filter">
+    <h4>Filtros</h4>
+    <app-date-filter
+      (dateRangeSelected)="onDateRangeSelected($event)"
+    ></app-date-filter>
+  </div>
+  <div class="header-list grid grid-cols-2 gap-4 mx-9">
     <!-- Column Headers -->
     <div class="col-span-1 grid grid-cols-3 gap-4 items-center">
-      <p class="text-left font-bold">Identificador</p>
-      <p class="ml-8 font-bold">Bairro</p>
-      <p class="font-bold">Data do ocorrido</p>
+      <p class="text-left">Identificador</p>
+      <p class="ml-8">Bairro</p>
+      <p>Data do ocorrido</p>
     </div>
     <!-- Tipo de agressão -->
     <div class="col-span-1 flex items-center justify-center">
-      <p class="font-bold">Tipo de agressão</p>
+      <p class="">Tipo de agressão</p>
     </div>
   </div>
 
-  <app-ocurrences-card
-    *ngFor="let ocurrence of ocurrences; let i = index"
-    [ocurrence]="ocurrence"
-    [backgroundColor]="getCardBackgroundColor(i)"
-  ></app-ocurrences-card>
+  <div
+    *ngFor="
+      let ocurrence of ocurrences
+        | paginate : { itemsPerPage: itemsPerPage, currentPage: currentPage };
+      let i = index
+    "
+  >
+    <app-ocurrences-card
+      [ocurrence]="ocurrence"
+      [backgroundColor]="getCardBackgroundColor(i)"
+    ></app-ocurrences-card>
+  </div>
+
+  <!-- Pagination Controls -->
+  <pagination-controls
+    class="custom-pagination"
+    previousLabel=""
+    nextLabel=""
+    (pageChange)="onPageChange($event)"
+  ></pagination-controls>
 </div>

@@ -81,11 +81,24 @@ class Database:
     def insert_complaint(self):
         pass
 
-    def get_complaints(self):
+    def get_complaints(self, from_date: str = None, to_date: str = None):
         complaints_with_user_data = []
         users = { user['id']: user for user in self.users }
+
+        # Converter as datas de string para datetime
+        if from_date:
+            from_date = datetime.strptime(from_date, '%Y-%m-%dT%H:%M:%S')
+        if to_date:
+            to_date = datetime.strptime(to_date, '%Y-%m-%dT%H:%M:%S')
         
         for complaint in self.complaints:
+            complaint_date = datetime.strptime(complaint['date'], '%Y-%m-%dT%H:%M:%S')
+
+            if from_date and complaint_date < from_date:
+                continue
+            if to_date and complaint_date > to_date:
+                continue
+            
             user_id = complaint['user_id']
             user = users[user_id]
 

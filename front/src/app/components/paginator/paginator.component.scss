@@ -1,0 +1,16 @@
+/* paginator.component.css */
+.page-button {
+  @apply w-8 h-8 flex justify-center items-center rounded mx-1 text-sm font-medium bg-white;
+}
+
+.page-ellipsis {
+  @apply w-8 h-8 flex justify-center items-center rounded mx-1 text-sm;
+}
+
+.active-page {
+  @apply bg-black text-white;
+}
+
+.active-page:hover {
+  @apply bg-black text-white;
+}

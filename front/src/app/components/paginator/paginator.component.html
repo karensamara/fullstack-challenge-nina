@@ -1,0 +1,28 @@
+<!-- paginator.component.html -->
+<div class="flex justify-center items-center gap-4">
+  <button class="py-2 px-4" (click)="handlePreviousPage()">
+    <img
+      src="assets/arrow-left.svg"
+      alt="Previous Page"
+      width="20"
+      height="20"
+    />
+  </button>
+  <div class="flex items-center gap-2">
+    <ng-container *ngFor="let page of displayedPages">
+      <button
+        *ngIf="isNumber(page)"
+        (click)="handlePageClick(page)"
+        [class.active-page]="page === currentPage"
+        class="page-button"
+        [attr.data-page]="page"
+      >
+        {{ page }}
+      </button>
+      <span *ngIf="page === '...'" class="page-ellipsis">...</span>
+    </ng-container>
+  </div>
+  <button class="py-2 px-4" (click)="handleNextPage()">
+    <img src="assets/arrow-right.svg" alt="Next Page" width="20" height="20" />
+  </button>
+</div>

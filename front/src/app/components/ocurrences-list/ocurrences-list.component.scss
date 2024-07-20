@@ -1,4 +1,30 @@
-// .ocurrences-list {
-//   margin: 2rem 0;
-//   height: 100%;
-// }
+@import "../../../styles.scss";
+
+.header-list p {
+  color: $gray-1 !important;
+}
+
+.custom-pagination ::ng-deep .ngx-pagination .current {
+  background: $primary;
+  border-radius: 4px;
+}
+
+.custom-pagination ::ng-deep .ngx-pagination {
+  background: $primary-extra-light;
+}
+
+.custom-pagination ::ng-deep .ngx-pagination .ngx-pagination-previous::before {
+  color: blue !important;
+  content: url("/assets/arrow-left.svg");
+  display: inline-block;
+  width: 1em; /* Adjust width as needed */
+  height: 1em; /* Adjust height as needed */
+}
+
+.custom-pagination ::ng-deep .ngx-pagination .ngx-pagination-next::after {
+  color: red !important;
+  content: url("/assets/arrow-right.svg");
+  display: inline-block;
+  width: 1em; /* Adjust width as needed */
+  height: 1em; /* Adjust height as needed */
+}
