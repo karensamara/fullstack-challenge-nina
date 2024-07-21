@@ -5,25 +5,13 @@
   height: 100%;
 }
 
-// mat-form-field {
-//   height: 4rem;
-//   color: blue;
-// }
 ::ng-deep .mat-form-field .mat-input-element {
-  border-radius: 8px; /* Adjust the border radius of the input field */
-  background-color: #f1ecff; /* Change the background color of the input field */
-  //   //   padding: 0;
-  //   font-size: 1rem;
-  //   font-style: italic;
+  border-radius: 8px;
+  background-color: #f1ecff;
   height: 2rem;
 }
 
-// ::ng-deep .mat-form-field {
-//   height: 1rem;
-// }
-
 ::ng-deep .mdc-text-field.mdc-text-field--filled .mdc-text-field__ripple {
-  // border-radius: 8px; /* Border radius for ripple effect */
   box-shadow: none;
   outline: none;
   background-color: transparent !important;
@@ -41,7 +29,6 @@
   background-color: transparent !important;
 }
 ::ng .mat-mdc-form-field-infix {
-  // height: 2rem;
   padding: 0;
 }
 ::ng-deep .mat-mdc-text-field-wrapper {
@@ -52,20 +39,15 @@
 }
 /* Target the button */
 ::ng-deep .mdc-icon-button.mat-mdc-icon-button.mat-mdc-button-base {
-  height: 2rem; /* Adjust the width */
-  // height: 1rem; /* Adjust the height */
-  // padding-bottom: 0.5rem;
+  height: 2rem;
   padding: 0rem;
   display: flex;
   justify-content: center;
   align-items: center;
   padding-bottom: 0.5rem;
-  // padding-top: 0.1rem;
 }
 
-/* Target the span element */
 ::ng-deep .mat-ripple.mat-mdc-button-ripple {
-  // padding-bottom: 0px;
   width: 34px;
 }
 ::ng-deep .mat-radio-container:hover .mat-radio-persistent-ripple {
@@ -81,7 +63,7 @@
   background: white;
   color: $black-2;
   transition: color 0.2s ease, text-decoration-color 0.2s ease,
-    text-decoration-thickness 0.3s ease; /* Smooth transitions */
+    text-decoration-thickness 0.3s ease;
 
   p:hover {
     color: #5b43d9 !important;
@@ -90,17 +72,15 @@
 }
 
 .clear-btn:active {
-  color: #3e2a8c; /* Darker color for active state */
-  text-decoration-color: transparent; /* Hide underline */
-  text-decoration-thickness: 0; /* Remove underline thickness */
+  color: #3e2a8c;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 0;
 }
 .filter-btn {
   background-color: $primary;
   color: white;
 }
-// .filter-btn:hover {
-//   background-color: rgb(91, 67, 217);
-// }
+
 .filter-btn:hover {
   background: rgb(72, 53, 173);
 }
