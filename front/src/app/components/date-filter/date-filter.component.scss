@@ -12,53 +12,20 @@
   height: 2rem;
 }
 
-::ng-deep .mdc-text-field.mdc-text-field--filled .mdc-text-field__ripple {
-  box-shadow: none;
-  outline: none;
-  background-color: transparent !important;
-}
-
 ::ng-deep .mat-mdc-text-field-wrapper {
   background: #f1ecff;
   border-color: #f1ecff;
   height: 2rem;
-  width: 2rem;
 }
-::ng-deep .mat-mdc-focus-indicator {
-  box-shadow: none;
-  outline: none;
-  background-color: transparent !important;
-}
-::ng .mat-mdc-form-field-infix {
-  padding: 0;
-}
-::ng-deep .mat-mdc-text-field-wrapper {
-  height: 32px !important;
-}
-::ng-deep .mat-mdc-form-field-flex {
-  margin-top: -7px !important;
-}
+
 /* Target the button */
 ::ng-deep .mdc-icon-button.mat-mdc-icon-button.mat-mdc-button-base {
-  height: 2rem;
   padding: 0rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-bottom: 0.5rem;
 }
 
-::ng-deep .mat-ripple.mat-mdc-button-ripple {
-  width: 34px;
-}
-::ng-deep .mat-radio-container:hover .mat-radio-persistent-ripple {
-  opacity: 0 !important;
-}
-::ng-deep .mat-mdc-form-field-infix {
-  padding: 0rem;
-  padding-top: 0.8rem;
-  padding-bottom: 1.2rem;
-}
 ::ng-deep .mdc-notched-outline__leading,
 ::ng-deep .mdc-notched-outline__notch,
 ::ng-deep .mdc-notched-outline__trailing {

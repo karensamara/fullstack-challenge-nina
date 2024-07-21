@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { NgxPaginationModule } from 'ngx-pagination'; // Import NgxPaginationModule
 import { ComplaintsService } from '../../services/complaints.service';
 import { Complaint } from '../../models/complaint.model';
 import { CommonModule } from '@angular/common';
 import { OcurrencesCardComponent } from '../ocurrences-card/ocurrences-card.component';
 import { DateFilterComponent } from '../date-filter/date-filter.component';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-ocurrences-list',
@@ -14,6 +15,7 @@ import { DateFilterComponent } from '../date-filter/date-filter.component';
     NgxPaginationModule,
     OcurrencesCardComponent,
     DateFilterComponent,
+    RouterLink,
   ],
   templateUrl: './ocurrences-list.component.html',
   styleUrls: ['./ocurrences-list.component.scss'],

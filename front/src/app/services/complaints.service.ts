@@ -45,4 +45,8 @@ export class ComplaintsService {
         )
       );
   }
+
+  getComplaintById(id: string): Observable<ComplaintDto> {
+    return this.http.get<ComplaintDto>(`${this.baseUrl}/${id}`);
+  }
 }

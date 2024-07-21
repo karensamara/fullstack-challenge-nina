@@ -28,6 +28,7 @@
     <app-ocurrences-card
       [ocurrence]="ocurrence"
       [backgroundColor]="getCardBackgroundColor(i)"
+      [routerLink]="['/details', ocurrence.id]"
     ></app-ocurrences-card>
   </div>
 

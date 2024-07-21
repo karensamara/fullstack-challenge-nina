@@ -4,9 +4,8 @@
   <div class="flex align-center">
     <mat-form-field
       appearance="outline"
-      class="text-xs rounded-xl text-gray w-52"
+      class="text-s rounded-xl text-gray w-64 italic"
     >
-      <!-- <mat-label>Date Range</mat-label> -->
       <mat-date-range-input
         [formGroup]="dateFilter"
         [rangePicker]="picker"
@@ -17,20 +16,20 @@
       </mat-date-range-input>
       <mat-datepicker-toggle matIconSuffix [for]="picker" class="p-0"
         ><mat-icon matDatepickerToggleIcon class="">
-          <img src="assets/calendar.svg" class="size-4" /> </mat-icon
+          <img src="assets/calendar.svg" class="" /> </mat-icon
       ></mat-datepicker-toggle>
       <mat-date-range-picker #picker></mat-date-range-picker>
     </mat-form-field>
 
     <div>
       <button
-        class="clear-btn rounded-2xl w-28 h-[36px]"
+        class="clear-btn rounded-2xl w-28 h-[50px]"
         (click)="clearFilter()"
       >
         <p>Limpar</p>
       </button>
       <button
-        class="filter-btn rounded-2xl w-28 h-[36px]"
+        class="filter-btn rounded-2xl w-28 h-[50px]"
         (click)="applyFilter()"
       >
         <p class="text-white">Filtrar</p>
