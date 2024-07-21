@@ -1,27 +1,33 @@
-<div class="date-filter">
-  <mat-form-field appearance="outline" class="text-xs">
+<div class="flex align-center">
+  <mat-form-field
+    appearance="outline"
+    class="text-xs rounded-xl border-white text-gray w-52"
+  >
     <!-- <mat-label>Date Range</mat-label> -->
     <mat-date-range-input
       [formGroup]="dateFilter"
       [rangePicker]="picker"
-      class="h-7"
+      class="color-black p-0"
     >
       <input matStartDate formControlName="start" placeholder="Data incial" />
       <input matEndDate formControlName="end" placeholder="Data final" />
     </mat-date-range-input>
-    <mat-datepicker-toggle matIconSuffix [for]="picker"
-      ><mat-icon matDatepickerToggleIcon class="h-6">
-        <img src="assets/calendar.svg" class="size-6" /> </mat-icon
+    <mat-datepicker-toggle matIconSuffix [for]="picker" class="p-0"
+      ><mat-icon matDatepickerToggleIcon class="">
+        <img src="assets/calendar.svg" class="size-4" /> </mat-icon
     ></mat-datepicker-toggle>
     <mat-date-range-picker #picker></mat-date-range-picker>
   </mat-form-field>
 
   <div>
-    <button mat-raised-button color="warn" (click)="clearFilter()">
-      Clear
+    <button class="clear-btn rounded-2xl w-28 h-[32px]" (click)="clearFilter()">
+      <p>Limpar</p>
     </button>
-    <button mat-raised-button color="primary" (click)="applyFilter()">
-      Filter
+    <button
+      class="filter-btn rounded-2xl w-28 h-[32px]"
+      (click)="applyFilter()"
+    >
+      <p class="text-white">Filtrar</p>
     </button>
   </div>
 </div>
