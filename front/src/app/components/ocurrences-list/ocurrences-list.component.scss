@@ -4,6 +4,10 @@
   color: $gray-1 !important;
 }
 
+.filter {
+  margin: 1rem 0;
+}
+
 .custom-pagination ::ng-deep .ngx-pagination .current {
   background: $primary;
   border-radius: 4px;
