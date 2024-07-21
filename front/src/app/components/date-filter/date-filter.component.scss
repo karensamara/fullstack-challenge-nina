@@ -7,15 +7,14 @@
 }
 
 ::ng-deep .mat-form-field .mat-input-element {
-  border-radius: 8px;
+  // border-radius: 1rem;
   background-color: #f1ecff;
-  height: 2rem;
 }
 
 ::ng-deep .mat-mdc-text-field-wrapper {
   background: #f1ecff;
   border-color: #f1ecff;
-  height: 2rem;
+  border-radius: 1rem;
 }
 
 /* Target the button */

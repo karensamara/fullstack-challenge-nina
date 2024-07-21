@@ -1,11 +1,8 @@
 <div class="date-filter flex flex-col">
   <p id="date-text">Intervalo</p>
 
-  <div class="flex align-center">
-    <mat-form-field
-      appearance="outline"
-      class="text-s rounded-xl text-gray w-64 italic"
-    >
+  <div class="flex align-center rounded-2xl">
+    <mat-form-field appearance="outline" class="text-s text-gray w-68 italic">
       <mat-date-range-input
         [formGroup]="dateFilter"
         [rangePicker]="picker"
