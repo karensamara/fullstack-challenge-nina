@@ -8,7 +8,10 @@ import {
   PLATFORM_ID,
 } from '@angular/core';
 import { Chart, registerables } from 'chart.js';
+import { ComplaintsService } from '../../services/complaints.service';
+import { ComplaintTypesDto } from '../../models/complaint.model';
 Chart.register(...registerables);
+Chart.defaults.color = '#313131';
 
 @Component({
   selector: 'app-type-barchart',
@@ -20,20 +23,40 @@ Chart.register(...registerables);
 export class TypeBarchartComponent implements AfterViewInit {
   @ViewChild('barChartType') barChartType!: ElementRef<HTMLCanvasElement>;
 
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+  private desiredLabels: (keyof ComplaintTypesDto)[] = [
+    'UNWANTED_PHOTOS',
+    'GROPING',
+    'THREATENING',
+    'FLASHING',
+    'STALKING',
+    'UNWANTED_COMMENTS',
+  ];
+
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: Object,
+    private complaintsService: ComplaintsService
+  ) {}
 
   ngAfterViewInit(): void {
     if (!isPlatformBrowser(this.platformId)) {
       return;
     } else {
-      this.createChart();
+      this.complaintsService
+        .getComplaintsGroupByTypes()
+        .subscribe((data: ComplaintTypesDto) => {
+          const orderedData = this.desiredLabels.map(
+            (label) => data[label] || 0
+          );
+          console.log(orderedData);
+
+          this.initializeChart(orderedData);
+        });
     }
   }
 
-  createChart(): void {
-    // const ctx = document.getElementById('myBarChart') as HTMLCanvasElement;
+  initializeChart(data: number[]): void {
+    console.log(data);
     const ctx = this.barChartType.nativeElement.getContext('2d');
-    // const NUMBER_CFG = { count: DATA_COUNT, min: -100, max: 100 };
     if (ctx) {
       new Chart(ctx, {
         type: 'bar',
@@ -49,14 +72,14 @@ export class TypeBarchartComponent implements AfterViewInit {
           datasets: [
             {
               label: '',
-              data: [50, 60, 70, 80, 40, 30],
+              data: Object.values(data),
               backgroundColor: [
                 'rgba(91,67,217,1)',
                 'rgba(91,67,217,0.8)',
                 'rgba(91,67,217,0.6)',
                 'rgba(91,67,217,0.4)',
                 'rgba(91,67,217,0.3)',
-                'rgba(91,67,217,0)',
+                'rgba(182,181,187,1)',
               ],
               borderWidth: 0,
               barPercentage: 0.8,
@@ -76,16 +99,18 @@ export class TypeBarchartComponent implements AfterViewInit {
                 display: false, // Remove a grade (grid)
               },
               ticks: {
-                stepSize: 10, // Define o intervalo entre os números do eixo Y
+                stepSize: 10,
               },
             },
             y: {
-              beginAtZero: true,
               grid: {
                 display: false,
               },
               border: {
                 display: false,
+              },
+              ticks: {
+                crossAlign: 'far',
               },
             },
           },

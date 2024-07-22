@@ -2,7 +2,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
-import { Complaint, ComplaintDto } from '../models/complaint.model';
+import {
+  Complaint,
+  ComplaintDto,
+  ComplaintTypesDto,
+} from '../models/complaint.model';
 
 @Injectable({
   providedIn: 'root',
@@ -48,5 +52,9 @@ export class ComplaintsService {
 
   getComplaintById(id: string): Observable<ComplaintDto> {
     return this.http.get<ComplaintDto>(`${this.baseUrl}/${id}`);
+  }
+
+  getComplaintsGroupByTypes(): Observable<ComplaintTypesDto> {
+    return this.http.get<ComplaintTypesDto>(`${this.baseUrl}/group/types`);
   }
 }

@@ -25,3 +25,12 @@ export interface ComplaintDto {
   user_created_at: string;
   user_updated_at: string;
 }
+
+export interface ComplaintTypesDto {
+  GROPING: number;
+  STALKING: number;
+  UNWANTED_PHOTOS: number;
+  UNWANTED_COMMENTS: number;
+  THREATENING: number;
+  FLASHING: number;
+}
