@@ -18,6 +18,9 @@ const customTextPlugin = {
       chartArea: { top, bottom, left, right },
       options,
     } = chart;
+
+    if (!options.customText) return; // Early exit if customText is undefined
+
     const centerX = (right - left) / 2 + left;
     const centerY = (bottom - top) / 2 + top;
 
@@ -31,20 +34,24 @@ const customTextPlugin = {
     const lineHeight1 = 24; // Altura da linha para <p>
     const extraSpacing = 18; // Espaçamento extra para a quebra de linha
 
-    ctx.fillText(
-      options.customText.line1,
-      centerX,
-      centerY - (lineHeight1 + extraSpacing) / 2
-    );
+    if (options.customText.line1) {
+      ctx.fillText(
+        options.customText.line1,
+        centerX,
+        centerY - (lineHeight1 + extraSpacing) / 2
+      );
+    }
 
     // Desenhar a segunda linha com estilo de <caption>
     ctx.font = 'normal 1rem Poppins'; // Estilo para <caption>
     const lineHeight2 = 24; // Altura da linha para <caption>
-    ctx.fillText(
-      options.customText.line2,
-      centerX,
-      centerY + (lineHeight2 + extraSpacing) / 2
-    );
+    if (options.customText.line2) {
+      ctx.fillText(
+        options.customText.line2,
+        centerX,
+        centerY + (lineHeight2 + extraSpacing) / 2
+      );
+    }
 
     ctx.restore();
   },

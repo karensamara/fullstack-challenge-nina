@@ -1,69 +1,77 @@
 <div class="my-5 mx-10 md:my-10 md:mx-20" h-full>
-  <div class="flex align-center space-x-6">
+  <div class="flex items-center space-x-6">
     <button (click)="goBack()"><img src="assets/arrow-left.svg" /></button>
-    <h2>Ocorrência {{ occurrence?.id }} - {{ dateAndTimeOccurredAt.date }}</h2>
+    <h2 class="text-wrap text-lg md:text-[32px]">
+      Ocorrência {{ occurrence?.id }} - {{ dateAndTimeOccurredAt.date }}
+    </h2>
   </div>
-  <div class="mx-8 my-4 md:mx-48 md:my-12 flex flex-col max-w-5xl">
-    <div class="flex align-center wrap space-x-6 mb-4">
-      <div class="flex flex-col space-y-2">
-        <p class="font-normal">Ocorrido em</p>
-        <p class="font-medium rounded-full bg-[#E9E8EB] px-3">
-          {{ dateAndTimeOccurredAt.date }} - {{ dateAndTimeOccurredAt.time }}
-        </p>
-      </div>
-      <div class="flex flex-col space-y-2">
-        <p class="font-normal">Data do registro</p>
-        <p class="font-medium rounded-full bg-[#E9E8EB] px-4">
-          {{ dateAndTimeRegisteredAt.date }} -
-          {{ dateAndTimeRegisteredAt.time }}
-        </p>
-      </div>
-    </div>
-    <div class="are-rosa rounded-2xl bg-[#F3EEFF] py-6 px-12 min-w-48 mb-8">
-      <h4>Detalhes</h4>
-      <div class="flex space-x-8 flex-wrap my-4">
-        <div>
-          <p class="caption-1 uppercase font-extrabold">situação</p>
-          <p class="text-[#706F71] font-normal">{{ occurrence?.situation }}</p>
-        </div>
-        <div>
-          <p class="caption-1 uppercase font-extrabold">gênero</p>
-          <p class="text-[#706F71] font-normal">
-            {{ occurrence?.user_gender }}
+  <div class="w-full flex items-center justify-center">
+    <div class="mx-8 my-4 md:mx-48 md:my-12 flex flex-col max-w-5xl">
+      <div class="flex items-center flex-wrap space-x-6 mb-4">
+        <div class="flex flex-col space-y-2">
+          <p class="font-normal">Ocorrido em</p>
+          <p class="font-medium rounded-full bg-[#E9E8EB] px-3">
+            {{ dateAndTimeOccurredAt.date }} - {{ dateAndTimeOccurredAt.time }}
           </p>
         </div>
-        <div>
-          <p class="caption-1 uppercase font-extrabold">etnia</p>
-          <p class="text-[#706F71] font-normal">
-            {{ occurrence?.user_ethnicity }}
-          </p>
-        </div>
-        <div>
-          <p class="caption-1 uppercase font-extrabold">idade</p>
-          <p class="text-[#706F71] font-normal">{{ userAge }}</p>
-        </div>
-        <div>
-          <p class="caption-1 uppercase font-extrabold">bairro</p>
-          <p class="text-[#706F71] font-normal">
-            {{ occurrence?.neighborhood }}
+        <div class="flex flex-col space-y-2">
+          <p class="font-normal">Data do registro</p>
+          <p class="font-medium rounded-full bg-[#E9E8EB] px-4">
+            {{ dateAndTimeRegisteredAt.date }} -
+            {{ dateAndTimeRegisteredAt.time }}
           </p>
         </div>
       </div>
-      <div>
-        <p class="caption-1 uppercase font-extrabold">relato</p>
-        <div class="max-h-40 overflow-y-auto">
-          <p class="rounded-2xl bg-white py-4 px-8 font-normal text-[#48464A]">
-            {{ occurrence?.description }}
+      <div class="rounded-2xl bg-[#F3EEFF] py-6 px-12 min-w-48 mb-8">
+        <h4>Detalhes</h4>
+        <div class="flex space-x-8 flex-wrap my-4">
+          <div>
+            <p class="caption-1 uppercase font-extrabold">situação</p>
+            <p class="text-[#706F71] font-normal">
+              {{ occurrence?.situation }}
+            </p>
+          </div>
+          <div>
+            <p class="caption-1 uppercase font-extrabold">gênero</p>
+            <p class="text-[#706F71] font-normal">
+              {{ occurrence?.user_gender }}
+            </p>
+          </div>
+          <div>
+            <p class="caption-1 uppercase font-extrabold">etnia</p>
+            <p class="text-[#706F71] font-normal">
+              {{ occurrence?.user_ethnicity }}
+            </p>
+          </div>
+          <div>
+            <p class="caption-1 uppercase font-extrabold">idade</p>
+            <p class="text-[#706F71] font-normal">{{ userAge }}</p>
+          </div>
+          <div>
+            <p class="caption-1 uppercase font-extrabold">bairro</p>
+            <p class="text-[#706F71] font-normal">
+              {{ occurrence?.neighborhood }}
+            </p>
+          </div>
+        </div>
+        <div>
+          <p class="caption-1 uppercase font-extrabold">relato</p>
+          <div class="max-h-40 overflow-y-auto">
+            <p
+              class="rounded-2xl bg-white py-4 px-8 font-normal text-[#48464A]"
+            >
+              {{ occurrence?.description }}
+            </p>
+          </div>
+        </div>
+        <div>
+          <p class="font-medium text-[#515151] mb-4 mt-6">Tipo de agressão</p>
+          <p
+            class="caption-1 inline uppercase text-[#5B43D9] border bg-[#C9BEFF] px-2 py-1 rounded-full"
+          >
+            {{ occurrence?.type }}
           </p>
         </div>
-      </div>
-      <div>
-        <p class="font-medium text-[#515151] mb-4 mt-6">Tipo de agressão</p>
-        <p
-          class="caption-1 inline uppercase text-[#5B43D9] border bg-[#C9BEFF] px-2 py-1 rounded-full"
-        >
-          {{ occurrence?.type }}
-        </p>
       </div>
     </div>
   </div>

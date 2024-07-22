@@ -5,7 +5,7 @@ import { CarouselComponent } from '../../components/carousel/carousel.component'
 import { DoughnutGraphComponent } from '../../components/doughnut-graph/doughnut-graph.component';
 import { OcurrencesListComponent } from '../../components/ocurrences-list/ocurrences-list.component';
 import { OcurrencesCardComponent } from '../../components/ocurrences-card/ocurrences-card.component';
-import { RouterOutlet } from '@angular/router';
+import { TypeBarchartComponent } from '../../components/type-barchart/type-barchart.component';
 
 @Component({
   selector: 'app-home',
@@ -17,7 +17,7 @@ import { RouterOutlet } from '@angular/router';
     DoughnutGraphComponent,
     OcurrencesListComponent,
     OcurrencesCardComponent,
-    // RouterOutlet,
+    TypeBarchartComponent,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
