@@ -1,0 +1,29 @@
+@import "../../../styles.scss";
+
+.chart-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  background-color: $primary;
+  overflow: hidden;
+
+  h4 {
+    display: block;
+    width: 100%;
+  }
+}
+
+.chart-container h4 {
+  display: block;
+  color: $white;
+}
+
+.chart-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -57,3 +57,18 @@ export interface ComplaintAgeDto {
   '50 - 59': number;
   '> 60': number;
 }
+
+export interface ComplaintMonthsDto {
+  Jan: number;
+  Fev: number;
+  Mar: number;
+  Abr: number;
+  Mai: number;
+  Jun: number;
+  Jul: number;
+  Ago: number;
+  Set: number;
+  Out: number;
+  Nov: number;
+  Dez: number;
+}

@@ -1,9 +1,9 @@
-from schemas.complaints import ComplaintSchema, ComplaintList, ComplaintUserSchema, ComplaintUserList
-from schemas.group_bys import *
+from back.schemas.complaints import ComplaintSchema, ComplaintList, ComplaintUserSchema, ComplaintUserList
+from back.schemas.group_bys import *
 from fastapi import APIRouter, HTTPException, Query
 from typing import Optional
 
-from database.database import client
+from back.database.database import client
 from http import HTTPStatus
 
 router = APIRouter(prefix='/complaints', tags=['complaints'])

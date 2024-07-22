@@ -8,6 +8,7 @@ import {
   ComplaintAtMomentDto,
   ComplaintDto,
   ComplaintGendersDto,
+  ComplaintMonthsDto,
   ComplaintTypesDto,
 } from '../models/complaint.model';
 
@@ -73,5 +74,9 @@ export class ComplaintsService {
 
   getComplaintsGroupByAge(): Observable<ComplaintAgeDto> {
     return this.http.get<ComplaintAgeDto>(`${this.baseUrl}/group/age_group`);
+  }
+
+  getComplaintsGroupByMonths(): Observable<ComplaintMonthsDto> {
+    return this.http.get<ComplaintMonthsDto>(`${this.baseUrl}/group/months`);
   }
 }

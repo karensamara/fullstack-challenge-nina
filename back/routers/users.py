@@ -1,6 +1,6 @@
-from schemas.users import UserSchema, UserList
+from back.schemas.users import UserSchema, UserList
 from fastapi import APIRouter, HTTPException
-from database.database import client
+from back.database.database import client
 from http import HTTPStatus
 
 router = APIRouter(prefix='/users', tags=['users'])
