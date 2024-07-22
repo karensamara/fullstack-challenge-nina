@@ -4,8 +4,10 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 import {
   Complaint,
+  ComplaintAgeDto,
   ComplaintAtMomentDto,
   ComplaintDto,
+  ComplaintGendersDto,
   ComplaintTypesDto,
 } from '../models/complaint.model';
 
@@ -63,5 +65,13 @@ export class ComplaintsService {
     return this.http.get<ComplaintAtMomentDto>(
       `${this.baseUrl}/group/at_moment`
     );
+  }
+
+  getComplaintsGroupByGender(): Observable<ComplaintGendersDto> {
+    return this.http.get<ComplaintGendersDto>(`${this.baseUrl}/group/genders`);
+  }
+
+  getComplaintsGroupByAge(): Observable<ComplaintAgeDto> {
+    return this.http.get<ComplaintAgeDto>(`${this.baseUrl}/group/age_group`);
   }
 }

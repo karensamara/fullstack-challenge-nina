@@ -3,8 +3,20 @@
 <div class="home">
   <div class="dashboard">
     <h1>Dashboard</h1>
-    <app-carousel></app-carousel>
-    <app-type-barchart></app-type-barchart>
+    <div class="px-16 pt-8 grid grid-cols-1 md:grid-cols-2 gap-4">
+      <app-carousel
+        class="col-span-1 flex justify-center items-center"
+      ></app-carousel>
+      <app-type-barchart
+        class="col-span-1 flex justify-center items-center"
+      ></app-type-barchart>
+      <app-gender-barchart
+        class="col-span-1 flex justify-center items-center"
+      ></app-gender-barchart>
+      <app-age-barchart
+        class="col-span-1 flex justify-center items-center"
+      ></app-age-barchart>
+    </div>
   </div>
   <div class="occurrences">
     <h3>Ocorrências</h3>

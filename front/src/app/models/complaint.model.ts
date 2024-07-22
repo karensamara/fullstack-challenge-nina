@@ -39,3 +39,21 @@ export interface ComplaintAtMomentDto {
   True: number;
   False: number;
 }
+
+export interface ComplaintGendersDto {
+  CIS_MALE: number;
+  CIS_FEMALE: number;
+  TRANS_MALE: number;
+  TRANS_FEMALE: number;
+  OTHER: number;
+}
+
+export interface ComplaintAgeDto {
+  '< 14': number;
+  '14 - 18': number;
+  '19 - 29': number;
+  '30 - 39': number;
+  '40 - 49': number;
+  '50 - 59': number;
+  '> 60': number;
+}

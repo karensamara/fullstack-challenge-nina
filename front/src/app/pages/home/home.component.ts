@@ -6,6 +6,8 @@ import { DoughnutGraphComponent } from '../../components/doughnut-graph/doughnut
 import { OcurrencesListComponent } from '../../components/ocurrences-list/ocurrences-list.component';
 import { OcurrencesCardComponent } from '../../components/ocurrences-card/ocurrences-card.component';
 import { TypeBarchartComponent } from '../../components/type-barchart/type-barchart.component';
+import { GenderBarchartComponent } from '../../components/gender-barchart/gender-barchart.component';
+import { AgeBarchartComponent } from '../../components/age-barchart/age-barchart.component';
 
 @Component({
   selector: 'app-home',
@@ -18,6 +20,8 @@ import { TypeBarchartComponent } from '../../components/type-barchart/type-barch
     OcurrencesListComponent,
     OcurrencesCardComponent,
     TypeBarchartComponent,
+    GenderBarchartComponent,
+    AgeBarchartComponent,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
