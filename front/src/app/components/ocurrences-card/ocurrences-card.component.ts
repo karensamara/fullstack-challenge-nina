@@ -9,7 +9,7 @@ import { ViewEncapsulation } from '@angular/core';
   imports: [CommonModule],
   templateUrl: './ocurrences-card.component.html',
   styleUrls: ['./ocurrences-card.component.scss'],
-  encapsulation: ViewEncapsulation.None, // Disable encapsulation for testing
+  encapsulation: ViewEncapsulation.None,
 })
 export class OcurrencesCardComponent {
   @Input() ocurrence!: Complaint;

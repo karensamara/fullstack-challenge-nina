@@ -28,17 +28,6 @@ export class OcurrencesListComponent implements OnInit {
 
   constructor(private complaintsService: ComplaintsService) {}
 
-  // ngOnInit(): void {
-  //   this.complaintsService.getComplaints().subscribe(
-  //     (complaints: Complaint[]) => {
-  //       this.ocurrences = complaints;
-  //     },
-  //     (error) => {
-  //       console.error('Error fetching complaints', error);
-  //     }
-  //   );
-  // }
-
   ngOnInit(): void {
     this.fetchComplaints();
   }
@@ -55,18 +44,6 @@ export class OcurrencesListComponent implements OnInit {
       }
     );
   }
-
-  // fetchComplaints(startDate?: Date, endDate?: Date): void {
-  //   this.complaintsService.getComplaints(startDate, endDate).subscribe(
-  //     (complaints: Complaint[]) => {
-  //       this.ocurrences = complaints;
-  //       this.pageLimit = Math.ceil(this.ocurrences.length / this.itemsPerPage);
-  //     },
-  //     (error) => {
-  //       console.error('Error fetching complaints', error);
-  //     }
-  //   );
-  // }
 
   onPageChange(page: number): void {
     this.currentPage = page;
