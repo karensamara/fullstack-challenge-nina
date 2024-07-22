@@ -56,7 +56,6 @@ export class PaginatorComponent {
   get displayedPages(): (number | string)[] {
     const displayedPages: (number | string)[] = [];
     const pageRange = this.isMobile ? 3 : 5;
-    console.log('got here');
 
     if (this.pageLimit <= pageRange) {
       for (let i = 1; i <= this.pageLimit; i++) {

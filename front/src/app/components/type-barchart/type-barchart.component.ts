@@ -47,7 +47,6 @@ export class TypeBarchartComponent implements AfterViewInit {
           const orderedData = this.desiredLabels.map(
             (label) => data[label] || 0
           );
-          console.log(orderedData);
 
           this.initializeChart(orderedData);
         });
@@ -55,7 +54,6 @@ export class TypeBarchartComponent implements AfterViewInit {
   }
 
   initializeChart(data: number[]): void {
-    console.log(data);
     const ctx = this.barChartType.nativeElement.getContext('2d');
     if (ctx) {
       new Chart(ctx, {
@@ -110,7 +108,8 @@ export class TypeBarchartComponent implements AfterViewInit {
                 display: false,
               },
               ticks: {
-                crossAlign: 'far',
+                align: 'start', // Tentar alterar o alinhamento para as labels do eixo X
+                padding: 5, // Ajuste o padding para ajudar no alinhamento
               },
             },
           },

@@ -21,6 +21,34 @@ export class ComplaintsService {
 
   constructor(private http: HttpClient) {}
 
+  private TYPE_TRANSLATIONS: { [key: string]: string } = {
+    GROPING: 'Agressão física',
+    STALKING: 'Perseguição',
+    UNWANTED_PHOTOS: 'Fotos indesejadas',
+    UNWANTED_COMMENTS: 'Comentários indesejados',
+    THREATENING: 'Ameaça',
+    FLASHING: 'Exibição indecente',
+  };
+  private GENDER_TRANSLATIONS: { [key: string]: string } = {
+    CIS_MALE: 'Homem cis',
+    CIS_FEMALE: 'Mulher cis',
+    TRANS_MALE: 'Homem trans',
+    TRANS_FEMALE: 'Mulher trans',
+    OTHER: 'Outro',
+  };
+
+  private ETHNICITY_TRANSLATIONS: { [key: string]: string } = {
+    BLACK: 'Negro',
+    BROWN: 'Pardo',
+    WHITE: 'Branco',
+    OTHER: 'Outro',
+  };
+
+  private SITUATION_TRANSLATIONS: { [key: string]: string } = {
+    VICTIM: 'Vítima',
+    WITNESS: 'Testemunha',
+  };
+
   getComplaints(startDate?: Date, endDate?: Date): Observable<Complaint[]> {
     let params = new HttpParams();
     const formatDate = (date: Date): string => {
@@ -49,14 +77,28 @@ export class ComplaintsService {
             id: complaint.id,
             neighborhood: complaint.neighborhood,
             date: new Date(complaint.date),
-            type: complaint.type,
+            type: this.TYPE_TRANSLATIONS[complaint.type] || complaint.type,
           }))
         )
       );
   }
 
   getComplaintById(id: string): Observable<ComplaintDto> {
-    return this.http.get<ComplaintDto>(`${this.baseUrl}/${id}`);
+    return this.http.get<ComplaintDto>(`${this.baseUrl}/${id}`).pipe(
+      map((data: ComplaintDto) => {
+        return {
+          ...data,
+          type: this.TYPE_TRANSLATIONS[data.type] || data.type,
+          user_gender:
+            this.GENDER_TRANSLATIONS[data.user_gender] || data.user_gender,
+          user_ethnicity:
+            this.ETHNICITY_TRANSLATIONS[data.user_ethnicity] ||
+            data.user_ethnicity,
+          situation:
+            this.SITUATION_TRANSLATIONS[data.situation] || data.situation,
+        };
+      })
+    );
   }
 
   getComplaintsGroupByTypes(): Observable<ComplaintTypesDto> {
