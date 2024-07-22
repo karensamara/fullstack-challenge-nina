@@ -109,15 +109,21 @@ class Database:
         return complaints_with_user_data
 
     def get_complaint(self, _id: str = None):
-        # TODO Implement a way to add the user data to the complaint,
-        # using the fields "complaint.user_id" and "user.id".
-        # Some functions won't work without this.
-        # Hint: Pay attention to the schemas when returning!
+        complaint_list = list(filter(lambda x: x['id'] == _id, self.complaints))
 
-        result = list(filter(lambda x: x['id'] == _id, self.complaints))
-        if len(result) > 0:
-            return result[0]
-        return None
+        if len(complaint_list) == 0:
+            return None
+        
+        complaint = complaint_list[0]
+        user_id = complaint['user_id']
+        
+        user = next((user for user in self.users if user['id'] == user_id), None)
+        
+        if user:
+            for key, value in user.items():
+                complaint[f'user_{key}'] = value
+
+        return complaint
     
     def get_complaints_from_user(self, user_id: str):
         complaints = self.get_complaints()

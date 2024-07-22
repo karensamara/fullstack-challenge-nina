@@ -17,7 +17,7 @@ def get_complaints(
     complaints.sort(key=lambda x: x['id'])
     return {'complaints': complaints}
 
-@router.get('/{complaint_id}', response_model=ComplaintSchema)
+@router.get('/{complaint_id}', response_model=ComplaintUserSchema)
 def get_complaint(complaint_id: str):
     complaint = client.get_complaint(complaint_id)
     
