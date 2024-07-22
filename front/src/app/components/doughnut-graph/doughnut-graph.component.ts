@@ -9,6 +9,8 @@ import {
 import { isPlatformBrowser } from '@angular/common';
 
 import { Chart, registerables } from 'chart.js';
+import { ComplaintsService } from '../../services/complaints.service';
+import { ComplaintAtMomentDto } from '../../models/complaint.model';
 Chart.register(...registerables);
 const customTextPlugin = {
   id: 'customTextPlugin',
@@ -69,91 +71,96 @@ export class DoughnutGraphComponent implements AfterViewInit {
   @ViewChild('doughnutChart1') doughnutChart1!: ElementRef<HTMLCanvasElement>;
   @ViewChild('doughnutChart2') doughnutChart2!: ElementRef<HTMLCanvasElement>;
 
-  public config1: any = {
-    type: 'doughnut',
-    data: {
-      labels: ['#5B43D9', 'Blue', 'Yellow'],
-      datasets: [
-        {
-          label: '# of Votes',
-          data: [12.5, 87.5],
-          backgroundColor: ['white', '#C9BEFF'],
-          borderWidth: 0,
-        },
-      ],
-    },
-    options: {
-      responsive: true,
-      cutout: '80%',
-      customText: {
-        line1: '12,5%', // Texto para <p>
-        line2: 'No momento', // Texto para <caption>
-      },
-      plugins: {
-        legend: {
-          display: false,
-        },
-        tooltip: {
-          callbacks: {
-            title: () => '', // Optional: Hide tooltips if not needed
-          },
-        },
-        customTextPlugin,
-      },
-    },
-  };
-
-  public config2: any = {
-    type: 'doughnut',
-    data: {
-      labels: ['Green', 'Purple', 'Orange'],
-      datasets: [
-        {
-          label: '# of Votes',
-          data: [25, 75],
-          backgroundColor: ['white', '#C9BEFF'],
-          borderWidth: 0,
-        },
-      ],
-    },
-    options: {
-      responsive: true,
-      cutout: '80%',
-      customText: {
-        line1: '25%', // Texto para <p>
-        line2: 'Após o ocorrido', // Texto para <caption>
-      },
-      plugins: {
-        legend: {
-          display: false,
-        },
-        customTextPlugin,
-      },
-    },
-  };
-
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: Object,
+    private complaintsService: ComplaintsService
+  ) {}
 
   ngAfterViewInit(): void {
     if (!isPlatformBrowser(this.platformId)) {
       return;
     } else {
-      this.initializeCharts();
+      this.complaintsService
+        .getComplaintsGroupByMoment()
+        .subscribe((data: ComplaintAtMomentDto) => {
+          const truePercentage = (data.True / (data.True + data.False)) * 100;
+          const falsePercentage = (data.False / (data.True + data.False)) * 100;
+          this.initializeCharts(truePercentage, falsePercentage);
+        });
     }
   }
 
-  initializeCharts(): void {
+  initializeCharts(truePercentage: number, falsePercentage: number): void {
     const ctx1 = this.doughnutChart1.nativeElement.getContext('2d');
     const ctx2 = this.doughnutChart2.nativeElement.getContext('2d');
+    const config1: any = {
+      type: 'doughnut',
+      data: {
+        datasets: [
+          {
+            label: '',
+            data: [truePercentage, 100 - truePercentage],
+            backgroundColor: ['white', '#C9BEFF'],
+            borderWidth: 0,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        cutout: '80%',
+        customText: {
+          line1: `${truePercentage.toFixed(1)}%`, // Texto para <p>
+          line2: 'No momento', // Texto para <caption>
+        },
+        plugins: {
+          legend: {
+            display: false,
+          },
+          tooltip: {
+            callbacks: {
+              title: () => '', // Optional: Hide tooltips if not needed
+            },
+          },
+          customTextPlugin,
+        },
+      },
+    };
 
+    const config2: any = {
+      type: 'doughnut',
+      data: {
+        datasets: [
+          {
+            label: '',
+            data: [falsePercentage, 100 - falsePercentage],
+            backgroundColor: ['white', '#C9BEFF'],
+            borderWidth: 0,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        cutout: '80%',
+        customText: {
+          line1: `${falsePercentage.toFixed(1)}%`, // Texto para <p>
+          line2: 'Após o ocorrido', // Texto para <caption>
+        },
+        plugins: {
+          legend: {
+            display: false,
+          },
+          customTextPlugin,
+        },
+      },
+    };
     if (ctx1) {
-      new Chart(ctx1, this.config1);
+      new Chart(ctx1, config1);
     } else {
       console.error('Canvas context for doughnutChart1 not found');
     }
 
     if (ctx2) {
-      new Chart(ctx2, this.config2);
+      new Chart(ctx2, config2);
     } else {
       console.error('Canvas context for doughnutChart2 not found');
     }

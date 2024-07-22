@@ -34,3 +34,8 @@ export interface ComplaintTypesDto {
   THREATENING: number;
   FLASHING: number;
 }
+
+export interface ComplaintAtMomentDto {
+  True: number;
+  False: number;
+}

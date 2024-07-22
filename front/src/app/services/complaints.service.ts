@@ -4,6 +4,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 import {
   Complaint,
+  ComplaintAtMomentDto,
   ComplaintDto,
   ComplaintTypesDto,
 } from '../models/complaint.model';
@@ -56,5 +57,11 @@ export class ComplaintsService {
 
   getComplaintsGroupByTypes(): Observable<ComplaintTypesDto> {
     return this.http.get<ComplaintTypesDto>(`${this.baseUrl}/group/types`);
+  }
+
+  getComplaintsGroupByMoment(): Observable<ComplaintAtMomentDto> {
+    return this.http.get<ComplaintAtMomentDto>(
+      `${this.baseUrl}/group/at_moment`
+    );
   }
 }
