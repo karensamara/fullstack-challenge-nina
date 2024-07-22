@@ -57,13 +57,16 @@ export class MonthsLinechartComponent implements AfterViewInit {
           labels: Object.keys(data),
           datasets: [
             {
-              label: 'Monthly Complaints',
+              label: 'Ocorrências no mês',
               data: Object.values(data),
               backgroundColor: gradient,
               borderColor: 'white',
               borderWidth: 1,
               fill: true,
               tension: 0.1,
+              pointBackgroundColor: 'rgba(255, 255, 255, 1)', // White circles for points
+              pointRadius: 3, // Size of the points
+              pointHoverRadius: 5, // Size of the points on hover
             },
           ],
         },
