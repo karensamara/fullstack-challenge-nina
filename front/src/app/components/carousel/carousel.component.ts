@@ -3,11 +3,17 @@ import { CommonModule } from '@angular/common';
 import { register } from 'swiper/element/bundle';
 import { DoughnutGraphComponent } from '../doughnut-graph/doughnut-graph.component';
 import { MonthsLinechartComponent } from '../months-linechart/months-linechart.component';
+import { NeighborhoodBarchartComponent } from '../neighborhood-barchart/neighborhood-barchart.component';
 register();
 @Component({
   selector: 'app-carousel',
   standalone: true,
-  imports: [CommonModule, DoughnutGraphComponent, MonthsLinechartComponent],
+  imports: [
+    CommonModule,
+    DoughnutGraphComponent,
+    MonthsLinechartComponent,
+    NeighborhoodBarchartComponent,
+  ],
   templateUrl: './carousel.component.html',
   styleUrl: './carousel.component.scss',
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

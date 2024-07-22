@@ -72,3 +72,8 @@ export interface ComplaintMonthsDto {
   Nov: number;
   Dez: number;
 }
+
+export interface ComplaintNeighborhoodDto {
+  name: string;
+  count: number;
+}

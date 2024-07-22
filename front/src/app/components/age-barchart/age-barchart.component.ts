@@ -9,10 +9,7 @@ import {
 } from '@angular/core';
 import { Chart, registerables } from 'chart.js';
 import { ComplaintsService } from '../../services/complaints.service';
-import {
-  ComplaintAgeDto,
-  ComplaintGendersDto,
-} from '../../models/complaint.model';
+import { ComplaintAgeDto } from '../../models/complaint.model';
 
 Chart.register(...registerables);
 Chart.defaults.color = '#313131';
