@@ -27,3 +27,12 @@
   justify-content: center;
   align-items: center;
 }
+.chart-item {
+  //   width: 18rem;
+  margin: 2rem 1rem;
+}
+
+.chart-item canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
